@@ -9,7 +9,7 @@ class Ship
     end
 
     def length?
-        
+        return @length
     end
 
     attr_reader :length
