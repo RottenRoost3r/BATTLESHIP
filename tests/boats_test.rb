@@ -8,8 +8,13 @@ class Boats < Minitest::Test
     end
 
     def test_that_ship_exists
-        x = Ship.new
+        x = Ship.new(4, "battleship")
         assert_equal(Ship, x.class)
+    end
+
+    def test_attributes
+        x = Ship.new(4, "battleship")
+        assert_equal("battleship", x.type?)
     end
 
 end
