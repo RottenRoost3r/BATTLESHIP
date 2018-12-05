@@ -1,3 +1,5 @@
+require_relative "master.rb"
+
 class Ship
     def initialize(length, name)
         @length = length
