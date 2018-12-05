@@ -17,6 +17,8 @@ class Ship
         @hits += 1
         if @hits == @length
             return "#{name.capitalize} Destroyed!"
+        else 
+            return "You Hit a Ship!"
         end
     end
 

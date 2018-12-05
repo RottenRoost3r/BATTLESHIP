@@ -26,4 +26,9 @@ class Boats < Minitest::Test
         x = Ship.new(1, "tugboat")
         assert_equal("Tugboat Destroyed!", x.take_hit())
     end
+
+    def test_hits_2
+        x = Ship.new(4, "battleship")
+        assert_equal("You Hit a Ship!", x.take_hit())
+    end
 end
