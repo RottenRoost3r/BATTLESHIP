@@ -17,4 +17,9 @@ class Boats < Minitest::Test
         assert_equal("battleship", x.type?)
     end
 
+    def test_attributes
+        x = Ship.new(4, "battleship")
+        assert_equal(4, x.length?)
+    end
+
 end

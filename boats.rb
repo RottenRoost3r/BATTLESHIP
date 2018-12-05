@@ -8,6 +8,10 @@ class Ship
         return @name
     end
 
+    def length?
+        
+    end
+
     attr_reader :length
     attr_reader :name
 end
