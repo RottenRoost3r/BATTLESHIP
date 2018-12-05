@@ -14,7 +14,10 @@ class Ship
     end
 
     def take_hit()
-        
+        @hits += 1
+        if @hits == @length
+            return "#{name.capitalize} Destroyed!"
+        end
     end
 
     attr_reader :length
