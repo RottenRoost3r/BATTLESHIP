@@ -1,6 +1,6 @@
 
 class Cell
-    def initialize(coordinates)
+    def initialize()
         @contents ||= "Water"
         @coordinates = coordinates
     end

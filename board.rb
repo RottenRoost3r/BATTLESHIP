@@ -3,7 +3,7 @@ require_relative "boats.rb"
 
 class Grid 
     def initialize(size=12)
-        @grid = Array.new(size) {Array.new(size, "")}
+        @grid = Array.new(size) {Array.new(size, Cell.new().to_s)}
     end
 
     attr_reader :grid
@@ -11,5 +11,6 @@ class Grid
 end
 
 o = Grid.new(3)
-p 'poop'
-p o.grid
+o.grid.each do |v|
+    p v
+end
