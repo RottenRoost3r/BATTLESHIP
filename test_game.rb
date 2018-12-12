@@ -16,24 +16,15 @@ else
 end
 
 counter = 1
+num = 26
 letters = ('A'..'Z').to_a
-little_letters = ('a'..'z').to_a
 print " "
 
 board.grid.each_with_index do |v, i|
-    unless i == 26
+    if i < 26
         print "   #{letters[i]}"
     else 
-        print "   #{little_letters[i - 26]}"
-        print "   #{little_letters[i - 25]}"
-        print "   #{little_letters[i - 24]}"
-        print "   #{little_letters[i - 23]}"
-        print "   #{little_letters[i - 22]}"
-        print "   #{little_letters[i - 21]}"
-        print "   #{little_letters[i - 20]}"
-        print "   #{little_letters[i - 19]}"
-        print "   #{little_letters[i - 18]}"
-        print "   #{little_letters[i - 17]}"
+        print "   #{letters[i - num]}".downcase
     end
 
 end
