@@ -6,7 +6,7 @@ class Ship
         @hits = 0
         @ship = ship
     end
-    
+
     def type?()
         return @name
     end
@@ -14,6 +14,8 @@ class Ship
     def length?
         return @length
     end
+
+   
 
     def take_hit()
         @hits += 1
@@ -23,6 +25,7 @@ class Ship
             return "You Hit a Ship!"
         end
     end
+   
     attr_reader :ship
     attr_reader :length
     attr_reader :name

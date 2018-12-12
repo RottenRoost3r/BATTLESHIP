@@ -1,12 +1,12 @@
 require_relative "boats.rb"
 class Cell
     def initialize()
-        @contents = "Water"
+        @contents = "~"
         @coordinates = coordinates
     end
 
     def to_s
-        @contents == "Water" ? @contents : @contents.name
+        @contents == "~" ? @contents : @contents.name
     end
 
     def occupy(ship)
