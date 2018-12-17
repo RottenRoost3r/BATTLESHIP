@@ -15,38 +15,43 @@ else
     puts "please enter one of the listed options"
 end
 
-counter = 1
-letters = ('A'..'Z').to_a
-print " "
+def make_board(board)
+    counter_top = 0
+    print " "
 
-board.grid.each_with_index do |v, i|
-    if i < 26
-        print "   #{letters[i]}"
-    else 
-        print "   #{letters[i - 26]}".downcase
-    end
-end
-
-puts "\n"
-
-board.grid.each_with_index do |v, i|
-    v.each_with_index do |k, i|
-        if i == 0
-            if counter < 10
-                print " #{counter} (#{k.to_s})"
-                counter += 1
-            else # this extra if statement was just to satisfy my ocd, it's not actually neede, the game works fine without it, but the grid is offset past row 9 because the extra digit
-                print "#{counter} (#{k.to_s})"
-                counter += 1
-            end
-        elsif i == board.end_point
-            print " (#{k.to_s}) \n"
+    board.grid.each_with_index do |v, i|
+        if counter_top < 10
+            print "   #{counter_top}"
+            counter_top += 1
         else
-            print " (#{k.to_s})"
+            print "  #{counter_top}"
+            counter_top += 1
+        end
+    end
+
+    puts "\n"
+    counter_side = 0
+    board.grid.each_with_index do |v, i|
+        
+        v.each_with_index do |k, i|
+            if i == 0
+                if counter_side < 10
+                    print " #{counter_side} (#{k.to_s})"
+                    counter_side += 1
+                else # this extra if statement was just to satisfy my ocd, it's not actually neede, the game works fine without it, but the grid is offset past row 9 because the extra digit
+                    print "#{counter_side} (#{k.to_s})"
+                    counter_side += 1
+                end
+            elsif i == board.end_point
+                print " (#{k.to_s}) \n"
+            else
+                print " (#{k.to_s})"
+            end
         end
     end
 end
 
+make_board(board)
 puts "you have 5 ships"
 puts "-----------------"
 puts "carrier - 5 spaces"
@@ -57,8 +62,17 @@ puts "----------------"
 
 puts "please list the space you want your carrier to start"
 start = gets.chomp
-puts "witch direction do you want your ship to go? [up] [down] [left] [right]"
+puts "witch direction do you want your ship to go? [horizontal] [vertical]"
 direction = gets.chomp
+
+
+thing = start.split("")
+
+board.place_ship(Ship.new(5, "C"), thing[0].to_i, thing[1].to_i, direction)
+make_board(board)
+
+
+
 
 
 

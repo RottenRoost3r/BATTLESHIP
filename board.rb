@@ -12,10 +12,10 @@ class Grid
     def place_ship(ship, row, col, orientation)
        ship.length.times do
             if orientation == "horizontal"
-                self.grid[row][col].occupy()
+                self.grid[row][col].occupy(ship)
                 col += 1
             else
-                self.grid[row][col].occupy()
+                self.grid[row][col].occupy(ship)
                 row += 1
             end
         end

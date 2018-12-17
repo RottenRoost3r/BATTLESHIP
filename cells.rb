@@ -10,8 +10,8 @@ class Cell
         @contents == "~" ? @contents : @contents.name
     end
 
-    def occupy()
-        @contents = "ship"
+    def occupy(ship)
+        @contents = ship
         @status = "occupied"
     end
 
