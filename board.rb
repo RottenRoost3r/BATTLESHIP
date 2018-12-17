@@ -6,10 +6,21 @@ class Grid
         @grid = Array.new(size) {Array.new(size) {Cell.new()}}
         @end_point = size - 1
     end
+
     
-    def place_ship()
+    
+    def place_ship(ship, row, col, orientation)
+       ship.length.times do
+            if orientation == "horizontal"
+                self.grid[row][col].occupy()
+                col += 1
+            else
+                self.grid[row][col].occupy()
+                row += 1
+            end
+        end
     end
-    
+
     attr_reader :end_point
     attr_reader :grid
     attr_reader :size

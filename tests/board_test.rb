@@ -9,7 +9,18 @@ class Board < Minitest::Test
 
     def test_ship_placement
         board = Grid.new
-        board.place_ship()
-        assert_equal("ship", board.grid[1][5].content())
+        row = 1
+        col = 1
+        board.place_ship(Ship.new(1,"tugboat"), row, col, "horizontal")
+        assert_equal("ship", board.grid[row][col].content())
+    end
+
+    def test_ship_placement_2
+        board = Grid.new
+        row = 5
+        col = 5
+        board.place_ship(Ship.new(5,"tugboat"), row, col, "horizontal")
+        assert_equal("ship", board.grid[row][col].content())
+        assert_equal("ship", board.grid[5][6].content())
     end
 end
