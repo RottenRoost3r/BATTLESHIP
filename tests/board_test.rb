@@ -7,4 +7,6 @@ class Board < Minitest::Test
         assert_equal(1, 1)
     end
 
+    def test_ship_placement
+    end
 end

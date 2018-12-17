@@ -7,6 +7,9 @@ class Grid
         @end_point = size - 1
     end
     
+    def place_ship()
+    end
+    
     attr_reader :end_point
     attr_reader :grid
     attr_reader :size

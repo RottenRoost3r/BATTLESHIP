@@ -15,8 +15,6 @@ class Ship
         return @length
     end
 
-   
-
     def take_hit()
         @hits += 1
         if @hits == @length

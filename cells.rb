@@ -9,8 +9,8 @@ class Cell
         @contents == "~" ? @contents : @contents.name
     end
 
-    def occupy(ship)
-        @contents = ship
+    def content()
+        
     end
     attr_reader :contents
     attr_reader :coordinates

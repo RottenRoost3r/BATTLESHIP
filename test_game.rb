@@ -16,7 +16,6 @@ else
 end
 
 counter = 1
-num = 26
 letters = ('A'..'Z').to_a
 print " "
 
@@ -24,9 +23,8 @@ board.grid.each_with_index do |v, i|
     if i < 26
         print "   #{letters[i]}"
     else 
-        print "   #{letters[i - num]}".downcase
+        print "   #{letters[i - 26]}".downcase
     end
-
 end
 
 puts "\n"
@@ -48,4 +46,20 @@ board.grid.each_with_index do |v, i|
         end
     end
 end
+
+puts "you have 5 ships"
+puts "-----------------"
+puts "carrier - 5 spaces"
+puts "battleship - 4 spaces"
+puts "cruiser - 3 spaces"
+puts "destroyer - 2 spaces"
+puts "----------------"
+
+puts "please list the space you want your carrier to start"
+start = gets.chomp
+puts "witch direction do you want your ship to go? [up] [down] [left] [right]"
+direction = gets.chomp
+
+
+
 
