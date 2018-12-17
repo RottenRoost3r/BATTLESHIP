@@ -12,7 +12,7 @@ class Board < Minitest::Test
         row = 1
         col = 1
         board.place_ship(Ship.new(1,"tugboat"), row, col, "horizontal")
-        assert_equal("ship", board.grid[row][col].content())
+        assert_equal("tugboat", board.grid[row][col].to_s())
     end
 
     def test_ship_placement_2
@@ -20,7 +20,14 @@ class Board < Minitest::Test
         row = 5
         col = 5
         board.place_ship(Ship.new(5,"tugboat"), row, col, "horizontal")
-        assert_equal("ship", board.grid[row][col].content())
-        assert_equal("ship", board.grid[5][6].content())
+        assert_equal("tugboat", board.grid[5][5].to_s())
+        assert_equal("tugboat", board.grid[5][6].to_s())
+    end
+
+    def test_invalid_placement
+        board = Grid.new
+        row = 11
+        col = 22
+        assert_equal("invalid placement", board.place_ship(Ship.new(5,"tugboat"), row, col, "horizontal"))
     end
 end

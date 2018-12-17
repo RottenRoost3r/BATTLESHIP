@@ -4,7 +4,7 @@ class Ship
         @length = length
         @name = name
         @hits = 0
-        @ship = ship
+        
     end
 
     def type?()
@@ -24,7 +24,7 @@ class Ship
         end
     end
    
-    attr_reader :ship
+
     attr_reader :length
     attr_reader :name
 end
