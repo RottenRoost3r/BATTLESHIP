@@ -52,7 +52,7 @@ def make_board(board)
 end
 
 make_board(board)
-puts "you have 5 ships"
+puts "you have 4 ships"
 puts "-----------------"
 puts "carrier - 5 spaces"
 puts "battleship - 4 spaces"
@@ -60,15 +60,17 @@ puts "cruiser - 3 spaces"
 puts "destroyer - 2 spaces"
 puts "----------------"
 
-puts "please list the space you want your carrier to start"
-start = gets.chomp
+puts "please list the row you want your carrier to start"
+row = gets.chomp
+puts "please list the collumn you want your carrier to start"
+col = gets.chomp
 puts "witch direction do you want your ship to go? [horizontal] [vertical]"
 direction = gets.chomp
 
 
-thing = start.split("")
 
-board.place_ship(Ship.new(5, "C"), thing[0].to_i, thing[1].to_i, direction)
+
+board.place_ship(Ship.new(5, "C"), row.to_i, col.to_i, direction)
 make_board(board)
 
 
