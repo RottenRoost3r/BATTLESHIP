@@ -8,5 +8,8 @@ class Board < Minitest::Test
     end
 
     def test_ship_placement
+        board = Grid.new
+        board.place_ship()
+        assert_equal("ship", board.grid[1][5].content())
     end
 end
