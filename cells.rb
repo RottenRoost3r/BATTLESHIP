@@ -10,7 +10,7 @@ class Cell
     end
 
     def content()
-        
+        @contents
     end
     attr_reader :contents
     attr_reader :coordinates
