@@ -28,6 +28,6 @@ class Board < Minitest::Test
         board = Grid.new
         row = 11
         col = 22
-        assert_equal("invalid placement", board.place_ship(Ship.new(5,"tugboat"), row, col, "horizontal"))
+        assert_equal("invalid placement", board.check_board(Ship.new(5,"tugboat"), row, col, "horizontal"))
     end
 end
