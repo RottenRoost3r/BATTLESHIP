@@ -30,4 +30,6 @@ class Board < Minitest::Test
         col = 22
         assert_equal("invalid placement", board.check_board(Ship.new(5,"tugboat"), row, col, "horizontal"))
     end
+
+   
 end

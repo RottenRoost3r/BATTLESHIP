@@ -70,7 +70,7 @@ direction = gets.chomp
 
 
 
-board.place_ship(Ship.new(5, "C"), row.to_i, col.to_i, direction)
+puts board.check_board(Ship.new(5, "C"), row.to_i, col.to_i, direction)
 make_board(board)
 
 
