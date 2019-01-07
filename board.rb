@@ -41,8 +41,9 @@ class Grid
                 col += 1
             else
                 row += 1
-            end
+            end   
         end
+        orientation == "horizontal" ? col -= ship.length : row -= ship.length
         place_ship(ship, row, col, orientation)
     end
 
@@ -50,5 +51,4 @@ class Grid
     attr_reader :grid
     attr_reader :size
 end
-
 
