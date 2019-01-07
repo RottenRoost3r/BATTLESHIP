@@ -25,9 +25,9 @@ class Grid
 
     def check_board(ship, row, col, orientation)
         if orientation == "horizontal"
-            col + ship.length > grid.length ? error() : place_ship(ship, row, col, orientation)
+            col + ship.length > grid.length ? error() : check_spaces(ship, row, col, orientation)
         elsif orientation == "vertical"
-            row + ship.length > grid.length ? error() : place_ship(ship, row, col, orientation)
+            row + ship.length > grid.length ? error() : check_spaces(ship, row, col, orientation)
         else
             error()
         end
@@ -43,7 +43,7 @@ class Grid
                 row += 1
             end
         end
-        true
+        place_ship(ship, row, col, orientation)
     end
 
     attr_reader :end_point
