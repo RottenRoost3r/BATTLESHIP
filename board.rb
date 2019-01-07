@@ -34,6 +34,16 @@ class Grid
     end
 
     def check_spaces(ship, row, col, orientation)
+        ship.length.times do
+            if self.grid[row][col].status != :open
+                return "invalid placement"
+            elsif orientation == :horizontal
+                col += 1
+            else
+                row += 1
+            end
+        end
+        true
     end
 
     attr_reader :end_point
