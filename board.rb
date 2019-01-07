@@ -37,7 +37,10 @@ class Grid
         ship.length.times do
             if self.grid[row][col].status != "open"
                 return "invalid placement"
-            else orientation == "horizontal" ? col += 1 : row += 1
+            elsif orientation == "horizontal"
+                col += 1
+            else
+                row += 1
             end
         end
         place_ship(ship, row, col, orientation)
@@ -49,8 +52,3 @@ class Grid
 end
 
 
-# elsif orientation == "horizontal"
-#     col += 1
-# else
-#     row += 1
-# end
