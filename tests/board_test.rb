@@ -31,5 +31,13 @@ class Board < Minitest::Test
         assert_equal("invalid placement", board.check_board(Ship.new(5,"tugboat"), row, col, "horizontal"))
     end
 
+    def test_ship_on_ship
+        board = Grid.new
+        row = 1
+        col = 1
+        board.place_ship(Ship.new(5,"tugboat"), row, col, "horizontal")
+        assert_equal("invalid placement", board.check_spaces(Ship.new(5,"tugboat"), row, 2, "horizontal"))
+    end
+
    
 end

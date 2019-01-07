@@ -6,8 +6,6 @@ class Grid
         @grid = Array.new(size) {Array.new(size) {Cell.new()}}
         @end_point = size - 1
     end
-
-    
     
     def place_ship(ship, row, col, orientation)
        ship.length.times do
@@ -33,6 +31,9 @@ class Grid
         else
             error()
         end
+    end
+
+    def check_spaces(ship, row, col, orientation)
     end
 
     attr_reader :end_point
