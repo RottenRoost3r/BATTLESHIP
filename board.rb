@@ -46,7 +46,7 @@ class Grid
         return true
     end
 
-    def mastah(ship, row, col, orientation)
+    def master(ship, row, col, orientation)
         if check_board(ship, row, col, orientation) == true && check_spaces(ship, row, col, orientation) == true
             place_ship(ship, row, col, orientation)
         else

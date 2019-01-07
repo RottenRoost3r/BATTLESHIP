@@ -69,7 +69,7 @@ direction = gets.chomp
 
 puts board.check_board(Ship.new(5, "C"), row.to_i, col.to_i, direction)
 puts board.check_spaces(Ship.new(5, "C"), row.to_i, col.to_i, direction)
-puts board.mastah(Ship.new(5, "C"), row.to_i, col.to_i, direction)
+puts board.master(Ship.new(5, "C"), row.to_i, col.to_i, direction)
 make_board(board)
 
 puts "please list the row you want your carrier to start"
@@ -81,7 +81,7 @@ direction = gets.chomp
 
 puts board.check_board(Ship.new(5, "C"), row.to_i, col.to_i, direction)
 puts board.check_spaces(Ship.new(5, "C"), row.to_i, col.to_i, direction)
-puts board.mastah(Ship.new(5, "C"), row.to_i, col.to_i, direction)
+puts board.master(Ship.new(5, "C"), row.to_i, col.to_i, direction)
 make_board(board)
 
 
