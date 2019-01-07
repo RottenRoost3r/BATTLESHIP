@@ -48,5 +48,13 @@ class Board < Minitest::Test
         assert_equal("invalid placement", board.master(Ship.new(5,"tugboat"), row, 22, "horizontal"))
     end
 
+    def test_master_2
+        board = Grid.new
+        row = 1
+        col = 1
+        board.master(Ship.new(5,"tugboat"), row, col, "horizontal")
+        assert_equal("tugboat", board.grid[1][1].to_s())
+    end
+
    
 end
