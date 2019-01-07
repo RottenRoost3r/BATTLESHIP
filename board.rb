@@ -7,6 +7,10 @@ class Grid
         @end_point = size - 1
     end
     
+    def error()
+        return "invalid placement"
+    end
+
     def place_ship(ship, row, col, orientation)
        ship.length.times do
             if orientation == "horizontal"
@@ -19,34 +23,36 @@ class Grid
         end
     end
 
-    def error()
-        return "invalid placement"
-    end
-
     def check_board(ship, row, col, orientation)
         if orientation == "horizontal"
-            col + ship.length > grid.length ? error() : check_spaces(ship, row, col, orientation)
+            col + ship.length > grid.length ? false : true
         elsif orientation == "vertical"
-            row + ship.length > grid.length ? error() : check_spaces(ship, row, col, orientation)
+            row + ship.length > grid.length ? false : true
         else
-            error()
+            false
         end
     end
 
     def check_spaces(ship, row, col, orientation)
         ship.length.times do
             if self.grid[row][col].status != "open"
-                return "invalid placement"
+                return false
             elsif orientation == "horizontal"
                 col += 1
             else
                 row += 1
-            end   
+            end
         end
-        orientation == "horizontal" ? col -= ship.length : row -= ship.length
-        place_ship(ship, row, col, orientation)
+        return true
     end
 
+    def mastah(ship, row, col, orientation)
+        if check_board(ship, row, col, orientation) == true && check_spaces(ship, row, col, orientation) == true
+            place_ship(ship, row, col, orientation)
+        else
+            error()
+        end
+    end
     attr_reader :end_point
     attr_reader :grid
     attr_reader :size
