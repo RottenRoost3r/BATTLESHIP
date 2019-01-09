@@ -7,8 +7,13 @@ class Players < Minitest::Test
         assert_equal(1, 1)
     end
 
-    def test_player_something
+    def test_player_exists
         me = Player.new("jordan")
         assert_equal(Player, me.class)
+    end
+
+    def test_player_name
+        me = Player.new("jordan")
+        assert_equal("jordan", me.to_s)
     end
 end
