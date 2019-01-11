@@ -3,6 +3,7 @@ require_relative "boats.rb"
 
 class Grid 
     def initialize(size=12)
+        @size = size
         @grid = Array.new(size) {Array.new(size) {Cell.new()}}
         @end_point = size - 1
     end

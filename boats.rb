@@ -4,7 +4,6 @@ class Ship
         @length = length
         @name = name
         @hits = 0
-        
     end
 
     def type?()
