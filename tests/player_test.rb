@@ -25,5 +25,6 @@ class Players < Minitest::Test
     def test_player_has_ship
         me = Player.new("jordan")
         assert_equal(5, me.carrier.length?())
+        assert_equal(4, me.battleship.length?())
     end
 end

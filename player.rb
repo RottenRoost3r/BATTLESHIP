@@ -8,6 +8,9 @@ class Player
         @board = Grid.new()
         @size = @board.size
         @carrier = Ship.new(5, carrier)
+        @battleship = Ship.new(4, battleship)
+        @destroyer = Ship.new(3, destroyer)
+        @patrol = Ship.new(2, patrol)
     end
 
     def to_s
@@ -17,5 +20,8 @@ class Player
     attr_reader :board
     attr_reader :size
     attr_reader :carrier
+    attr_reader :battleship
+    attr_reader :destroyer
+    attr_reader :patrol
     
 end
