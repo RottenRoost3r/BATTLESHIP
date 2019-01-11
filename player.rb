@@ -7,6 +7,7 @@ class Player
         @name = name
         @board = Grid.new()
         @size = @board.size
+        @carrier = Ship.new(5, carrier)
     end
 
     def to_s
@@ -15,5 +16,6 @@ class Player
 
     attr_reader :board
     attr_reader :size
+    attr_reader :carrier
     
 end
