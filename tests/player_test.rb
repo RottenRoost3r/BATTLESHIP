@@ -26,5 +26,6 @@ class Players < Minitest::Test
         me = Player.new("jordan")
         assert_equal(5, me.carrier.length?())
         assert_equal(4, me.battleship.length?())
+        assert_equal(3, me.destroyer.length?())
     end
 end
