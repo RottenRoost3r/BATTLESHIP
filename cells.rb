@@ -22,3 +22,4 @@ class Cell
     attr_reader :contents
     attr_reader :coordinates
 end
+

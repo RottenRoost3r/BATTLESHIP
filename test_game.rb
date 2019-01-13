@@ -51,6 +51,7 @@ def make_board(board)
     end
 end
 
+
 make_board(board)
 puts "you have 4 ships"
 puts "-----------------"

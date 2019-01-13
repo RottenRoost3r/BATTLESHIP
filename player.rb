@@ -17,6 +17,8 @@ class Player
         @name
     end
 
+    
+
     attr_reader :board
     attr_reader :size
     attr_reader :carrier
