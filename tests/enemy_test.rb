@@ -13,6 +13,7 @@ class Opponent < Minitest::Test
         assert_equal(Enemy, nme.class)
         assert_equal(Grid, board.class)
         assert_equal(Array, nme.ships.class)
+        assert_equal(144, nme.coordinates.length)
     end
 
 end
