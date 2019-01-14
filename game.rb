@@ -14,8 +14,16 @@ board = ""
 
 boards.each do |key, value|
     if response == key
-        board = value
+        board = value        
     end
+end
+nme_board = ""
+if board.size == 12
+    nme_board = Grid.new(12)
+elsif board.size == 24
+    nme_board = Grid.new(24)
+else
+    nme_board = Grid.new(32)
 end
 
 
@@ -55,7 +63,12 @@ def make_board(board)
     end
 end
 
-make_board(board)
+def make_enemy_board(nme_board)
+    make_board(nme_board)
+end
+
+
+make_board(board); make_enemy_board(nme_board)
 
 ships = {"Carrier" => Ship.new(5, "C"), "Battleship" => Ship.new(4, "B"), "Destroyer" => Ship.new(3, "D"), "Patrol" => Ship.new(2, "P")}
 
@@ -70,5 +83,5 @@ ships.each_with_index do |(key, value),index|
     redo if board.check_board(value, row.to_i, col.to_i, orientation) == false 
     redo if board.check_spaces(value, row.to_i, col.to_i, orientation) == false
     puts board.master(value, row.to_i, col.to_i, orientation) 
-    make_board(board)
+    make_board(board); make_enemy_board(nme_board)
 end
