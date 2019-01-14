@@ -8,8 +8,11 @@ class Opponent < Minitest::Test
     end
 
     def test_that_enemy_exists
-        nme = Enemy.new(Grid.new(12))
+        board = Grid.new(12)
+        nme = Enemy.new(board)
         assert_equal(Enemy, nme.class)
+        assert_equal(Grid, board.class)
+        assert_equal(Array, nme.ships.class)
     end
 
 end

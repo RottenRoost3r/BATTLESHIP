@@ -7,4 +7,6 @@ class Enemy
             puts grid
         end
     end
+    attr_reader :grid
+    
 end
