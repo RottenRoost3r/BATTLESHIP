@@ -41,11 +41,7 @@ class Enemy
     def fire()
         @possible_targets = @coordinates
         @target = @possible_targets.sample
-        print @possible_targets
     end 
-
-    nme = Enemy.new(Grid.new(12))
-    puts nme.fire()
 
     
 

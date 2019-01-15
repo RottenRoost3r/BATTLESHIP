@@ -21,6 +21,7 @@ class Opponent < Minitest::Test
         nme = Enemy.new(board)
         nme.fire()
         assert_equal(Array, nme.possible_targets.class)
+        assert_equal(144, nme.possible_targets.length)
     end
 
 end
