@@ -2,10 +2,11 @@ require_relative "cells.rb"
 require_relative "boats.rb"
 require_relative "board.rb"
 require_relative "player.rb"
+require_relative "enemy.rb"
 
 
 
-boards = {"b" => Grid.new(12), "i" => Grid.new(24), "e" => Grid.new(32)}
+boards = {"b" => Grid.new(12), "i" => Grid.new(24), "e" => Grid.new(36)}
 
 puts "Please select difficulty: Beginner [b], Intermediate [i], Expert[e]"
 response = gets.chomp
@@ -17,13 +18,16 @@ boards.each do |key, value|
         board = value        
     end
 end
-nme_board = ""
+
 if board.size == 12
     nme_board = Grid.new(12)
+    opponent = Enemy.new(nme_board)
 elsif board.size == 24
     nme_board = Grid.new(24)
+    opponent = Enemy.new(nme_board)
 else
-    nme_board = Grid.new(32)
+    nme_board = Grid.new(36)
+    opponent = Enemy.new(nme_board)
 end
 
 
@@ -85,3 +89,6 @@ ships.each_with_index do |(key, value),index|
     puts board.master(value, row.to_i, col.to_i, orientation) 
     make_board(board); make_enemy_board(nme_board)
 end
+
+opponent.place_ships()
+make_board(board); make_enemy_board(nme_board)

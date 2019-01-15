@@ -1,11 +1,14 @@
 require_relative "boats.rb"
 require_relative "board.rb"
+require_relative "cells.rb"
+
 
 class Enemy
     def initialize(grid)
+        @grid = grid
         num = []
         @coordinates = []
-        @ships = ["Carrier" => Ship.new(5, "C"), "Battleship" => Ship.new(4, "B"), "Destroyer" => Ship.new(3, "D"), "Patrol" => Ship.new(2, "P")]
+        @ships = [Ship.new(5, "C"), Ship.new(4, "B"), Ship.new(3, "D"), Ship.new(2, "P")]
         counter = 0
         grid.size.times do
             num << counter
@@ -17,6 +20,26 @@ class Enemy
             end 
         end
     end
+
+    def place_ships()
+        counter = 0
+        4.times do
+            while true
+                possible = @coordinates
+                on_hold = possible.sample
+                orientations = ["horizontal", "vertical"]
+                if @grid.not_master(@ships[counter], on_hold[0], on_hold[1], orientations.sample) != "invalid placement"
+                    counter += 1
+                    possible.delete(on_hold)
+                    break
+                end
+            end
+        end
+    end
+
+    def fire()
+    end
+    
 
     attr_reader :grid
     attr_reader :ships

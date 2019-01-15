@@ -14,7 +14,7 @@ class Grid
 
     def place_ship(ship, row, col, orientation)
        ship.length.times do
-            if orientation == "horizontal"
+            if orientation == "horizontal" || orientation == "h"
                 self.grid[row][col].occupy(ship)
                 col += 1
             else
@@ -24,11 +24,22 @@ class Grid
         end
     end
 
+    def place_enemy(ship, row, col, orientation)
+        ship.length.times do
+            if orientation == "horizontal" || orientation == "h"
+                self.grid[row][col].annex(ship)
+                col += 1
+            elsif orientation = "vertical" || orientation == "v"
+                self.grid[row][col].annex(ship)
+                row += 1
+            end
+        end
+    end
     def check_board(ship, row, col, orientation)
-        if orientation == "horizontal"
-            col + ship.length > grid.length ? false : true
-        elsif orientation == "vertical"
-            row + ship.length > grid.length ? false : true
+        if orientation == "horizontal" || orientation == "h"
+            col + ship.length < grid.length && (col < grid.length && row < grid.length) ? true : false
+        elsif orientation == "vertical" || orientation == "v"
+            row + ship.length < grid.length && (col < grid.length && row < grid.length) ? true : false
         else
             false
         end
@@ -38,9 +49,9 @@ class Grid
         ship.length.times do
             if self.grid[row][col].status != "open"
                 return false
-            elsif orientation == "horizontal"
+            elsif orientation == "horizontal" || orientation == "h"
                 col += 1
-            else
+            elsif orientation = "vertical" || orientation == "v"
                 row += 1
             end
         end
@@ -54,6 +65,15 @@ class Grid
             error()
         end
     end
+
+    def not_master(ship, row, col, orientation)
+        if check_board(ship, row, col, orientation) == true && check_spaces(ship, row, col, orientation) == true
+            place_enemy(ship, row, col, orientation)
+        else
+            error()
+        end
+    end
+        
     attr_reader :end_point
     attr_reader :grid
     attr_reader :size

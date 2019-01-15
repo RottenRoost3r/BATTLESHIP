@@ -17,6 +17,7 @@ class Cell
 
     def annex(ship)
         @status = "occupied"
+        @contents = ship
     end
 
     def content()
