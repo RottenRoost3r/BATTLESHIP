@@ -36,13 +36,23 @@ class Enemy
             end
         end
     end
+ 
 
     def fire()
-    end
+        @possible_targets = @coordinates
+        @target = @possible_targets.sample
+        print @possible_targets
+    end 
+
+    nme = Enemy.new(Grid.new(12))
+    puts nme.fire()
+
     
 
     attr_reader :grid
     attr_reader :ships
     attr_reader :coordinates
+    attr_reader :possible_targets
+    attr_reader :target
     
 end
