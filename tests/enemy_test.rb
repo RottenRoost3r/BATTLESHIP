@@ -23,6 +23,7 @@ class Opponent < Minitest::Test
         assert_equal(Array, nme.possible_targets.class)
         assert_equal(144, nme.possible_targets.length)
         assert_equal(Array, nme.target.class)
+        assert_equal(2, nme.target.length)
     end
 
 end
