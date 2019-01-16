@@ -16,7 +16,7 @@ class Opponent < Minitest::Test
         assert_equal(144, nme.coordinates.length)
     end
 
-    def test_shooting
+    def test_targeting
         board = Grid.new(12)
         nme = Enemy.new(board)
         nme.fire()
@@ -25,5 +25,7 @@ class Opponent < Minitest::Test
         assert_equal(Array, nme.target.class)
         assert_equal(2, nme.target.length)
     end
+
+    
 
 end

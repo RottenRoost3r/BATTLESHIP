@@ -24,17 +24,6 @@ class Grid
         end
     end
 
-    def place_enemy(ship, row, col, orientation)
-        ship.length.times do
-            if orientation == "horizontal" || orientation == "h"
-                self.grid[row][col].annex(ship)
-                col += 1
-            elsif orientation = "vertical" || orientation == "v"
-                self.grid[row][col].annex(ship)
-                row += 1
-            end
-        end
-    end
     def check_board(ship, row, col, orientation)
         if orientation == "horizontal" || orientation == "h"
             col + ship.length < grid.length && (col < grid.length && row < grid.length) ? true : false
@@ -61,14 +50,6 @@ class Grid
     def master(ship, row, col, orientation)
         if check_board(ship, row, col, orientation) == true && check_spaces(ship, row, col, orientation) == true
             place_ship(ship, row, col, orientation)
-        else
-            error()
-        end
-    end
-
-    def not_master(ship, row, col, orientation)
-        if check_board(ship, row, col, orientation) == true && check_spaces(ship, row, col, orientation) == true
-            place_enemy(ship, row, col, orientation)
         else
             error()
         end

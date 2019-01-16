@@ -28,7 +28,7 @@ class Enemy
                 possible = @coordinates
                 on_hold = possible.sample
                 orientations = ["horizontal", "vertical"]
-                if @grid.not_master(@ships[counter], on_hold[0], on_hold[1], orientations.sample) != "invalid placement"
+                if @grid.master(@ships[counter], on_hold[0], on_hold[1], orientations.sample) != "invalid placement"
                     counter += 1
                     possible.delete(on_hold)
                     break
