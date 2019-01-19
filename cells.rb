@@ -7,7 +7,11 @@ class Cell
     end
 
     def to_s
-        @contents == "~" ? @contents : @contents.name
+        if @contents.class == Ship 
+            @contents.name
+        else
+            @contents
+        end
     end
 
     def got_hit

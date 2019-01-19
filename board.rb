@@ -12,9 +12,6 @@ class Grid
         return "invalid placement"
     end
 
-
-    
-
     def place_ship(ship, row, col, orientation)
        ship.length.times do
             if orientation == "horizontal" || orientation == "h"
@@ -77,6 +74,17 @@ class Grid
             error()
         end
     end
+
+    def shots_fired(row, col)
+        if self.grid[row][col].status == "occupied"
+             self.grid[row][col].got_hit()
+        elsif self.grid[row][col].status == "open"
+             self.grid[row][col].missed()
+        else
+            puts "invalid"
+        end
+    end
+    
     attr_reader :end_point
     attr_reader :grid
     attr_reader :size

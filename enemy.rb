@@ -36,15 +36,7 @@ class Enemy
             end
         end
     end
- 
-
-    def fire()
-        @possible_targets = @coordinates
-        @target = @possible_targets.sample
-    end 
-
     
-
     attr_reader :grid
     attr_reader :ships
     attr_reader :coordinates

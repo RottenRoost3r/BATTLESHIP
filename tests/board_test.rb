@@ -56,5 +56,13 @@ class Board < Minitest::Test
         assert_equal("tugboat", board.grid[1][1].to_s())
     end
 
+    def test_firing_shot
+        board = Grid.new
+        row = 1
+        col = 1
+        board.shots_fired(row, col)
+        assert_equal("X", board.grid[1][1].to_s())
+    end
+
    
 end

@@ -92,3 +92,39 @@ end
 
 opponent.place_ships()
 make_board(board); make_enemy_board(nme_board)
+
+def your_turn(grid)
+    puts "your turn first"
+    puts "what row would you like to fire on?"
+    row = gets.chomp
+    puts "what collum would you like to fire on?"
+    col = gets.chomp
+
+    puts grid.shots_fired(row.to_i, col.to_i)
+    
+end
+your_turn(nme_board)
+make_board(board); make_enemy_board(nme_board)
+
+def enemy_turn(opponent, grid)
+    @coordinates = []
+    num = []
+    counter = 0
+    grid.size.times do
+        num << counter
+        counter += 1
+    end
+    num.each do |row|
+        num.each do |col|
+            @coordinates << [row, col]
+        end 
+    end
+    @possible_targets = @coordinates
+    @target = @possible_targets.sample
+    row = @target[0]
+    col = @target[1]
+    puts grid.shots_fired(row.to_i, col.to_i)
+    
+end
+enemy_turn(opponent, board)
+make_board(board); make_enemy_board(nme_board)

@@ -26,6 +26,4 @@ class Opponent < Minitest::Test
         assert_equal(2, nme.target.length)
     end
 
-    
-
 end
