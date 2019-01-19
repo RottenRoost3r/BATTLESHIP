@@ -10,6 +10,16 @@ class Cell
         @contents == "~" ? @contents : @contents.name
     end
 
+    def got_hit
+        @contents = "X"
+        @status = "open"
+    end
+
+    def missed
+        @contents = "O"
+        @status = "open"
+    end
+
     def occupy(ship)
         @contents = ship
         @status = "occupied"
