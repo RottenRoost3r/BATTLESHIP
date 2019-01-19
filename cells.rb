@@ -15,6 +15,7 @@ class Cell
     end
 
     def got_hit
+        @contents.take_hit()
         @contents = "X"
         @status = "open"
     end
@@ -31,6 +32,7 @@ class Cell
 
     def annex(ship)
         @status = "occupied"
+        
     end
 
     def content()
