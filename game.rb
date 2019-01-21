@@ -103,30 +103,15 @@ def your_turn(grid)
     end
 end
 
-def enemy_turn(grid)
-    @coordinates = []
-    num = []
-    counter = 0
-    grid.size.times do
-        num << counter
-        counter += 1
-    end
-    num.each do |row|
-        num.each do |col|
-            @coordinates << [row, col]
-        end 
-    end
-    @possible_targets = @coordinates
-    @target = @possible_targets.sample
-    row = @target[0]
-    col = @target[1]
-    grid.shots_fired(row.to_i, col.to_i)
-    system('cls')
-end 
+# def enemy_turn(grid)
+    
+#     grid.shots_fired(row.to_i, col.to_i)
+#     system('cls')
+# end 
 
-def game_play(board, nme_board)
+def game_play(board, nme_board, opponent)
     while end_checker(board, nme_board) == true
-        your_turn(nme_board); enemy_turn(board)
+        your_turn(nme_board); opponent.enemy_turn(board)
         make_board(board); make_enemy_board(nme_board) 
     end
 end    
@@ -161,7 +146,7 @@ def end_checker(board, nme_board)
 
 end
 
-game_play(board, nme_board)
+game_play(board, nme_board, opponent)
 
 
 

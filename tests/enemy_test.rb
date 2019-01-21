@@ -19,7 +19,7 @@ class Opponent < Minitest::Test
     def test_targeting
         board = Grid.new(12)
         nme = Enemy.new(board)
-        nme.fire()
+        nme.enemy_turn(board)
         assert_equal(Array, nme.possible_targets.class)
         assert_equal(144, nme.possible_targets.length)
         assert_equal(Array, nme.target.class)

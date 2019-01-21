@@ -37,6 +37,27 @@ class Enemy
         end
     end
 
+    def enemy_turn(grid)
+        @coordinates = []
+        num = []
+        counter = 0
+        grid.size.times do
+            num << counter
+            counter += 1
+        end
+        num.each do |row|
+            num.each do |col|
+                @coordinates << [row, col]
+            end 
+        end
+        @possible_targets = @coordinates
+        @target = @possible_targets.sample
+        row = @target[0]
+        col = @target[1]
+        grid.shots_fired(row.to_i, col.to_i)
+        # system('cls')
+    end 
+
     attr_reader :grid
     attr_reader :ships
     attr_reader :coordinates
