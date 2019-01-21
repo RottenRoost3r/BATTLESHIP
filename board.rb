@@ -80,7 +80,6 @@ class Grid
         if row < @size && col < @size && row >= 0 && col >= 0
             if self.grid[row][col].content.class == Ship
                 p self.grid[row][col].content.take_hit()
-                p self.grid[row][col].content.hits()
             end
 
             return self.grid[row][col].hit_that()
