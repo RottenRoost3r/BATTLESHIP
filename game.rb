@@ -98,9 +98,9 @@ def your_turn(grid)
         puts "what collum would you like to fire on?"
         col = gets.chomp
         redo if row == ""
-        redo if col == ""
+        redo if col == "" 
         redo if grid.shots_fired(row.to_i, col.to_i) == "invalid"
-        system('cls')
+        # system('cls')
     end
 end
 

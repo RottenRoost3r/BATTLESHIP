@@ -78,7 +78,15 @@ class Grid
 
     def shots_fired(row, col)
         if row < @size && col < @size && row >= 0 && col >= 0
-            self.grid[row][col].hit_that()
+            if self.grid[row][col].content.class == Ship
+                p self.grid[row][col].content.take_hit()
+                p self.grid[row][col].content.hits()
+            end
+
+            return self.grid[row][col].hit_that()
+            
+            # puts "here is what you're looking for #{ self.grid[row][col].hit_that()}"
+           
         else
             return "invalid"
         end
@@ -108,7 +116,6 @@ class Grid
             return "YOU WIN!"
         elsif player_spaces == 0
             return "YOU LOSE!"
-            
         else
             true
         end

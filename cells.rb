@@ -18,9 +18,11 @@ class Cell
         if @status == "occupied"
             @contents = "X"
             @status = "dead"
+            return "Hit"
         elsif @status = "open" 
             @contents = "O"
             @status = "miss"
+            return "Miss"
         end
     end
 
