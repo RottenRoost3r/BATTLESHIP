@@ -84,6 +84,36 @@ class Grid
         end
     end
 
+    def end_checker(board, nme_board)
+        player_spaces = 0
+        nme_spaces = 0 
+    
+        board.grid.each do |row|
+            row.each do |cell|
+                if cell.status == "occupied"
+                    player_spaces += 1
+                end
+            end
+        end
+    
+        nme_board.grid.each do |row|
+            row.each do |cell|
+                if cell.status == "occupied"
+                    nme_spaces += 1
+                end
+            end
+        end
+    
+        if nme_spaces == 0
+            puts "YOU WIN!"
+        elsif player_spaces == 0
+            puts "YOU LOSE!"
+        else
+            true
+        end
+    
+    end
+
     attr_reader :end_point
     attr_reader :grid
     attr_reader :size

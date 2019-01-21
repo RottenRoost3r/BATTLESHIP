@@ -103,44 +103,15 @@ def your_turn(grid)
     end
 end
 
-def game_play(board, nme_board, opponent)
-    while end_checker(board, nme_board) == true
-        your_turn(nme_board); opponent.enemy_turn(board)
+coordinates = opponent.coordinates
+def game_play(board, nme_board, opponent, coordinates)
+    while board.end_checker(board, nme_board) == true
+        your_turn(nme_board); opponent.enemy_turn(board, coordinates)
         make_board(board); make_enemy_board(nme_board) 
     end
 end    
 
-def end_checker(board, nme_board)
-    player_spaces = 0
-    nme_spaces = 0 
-
-    board.grid.each do |row|
-        row.each do |cell|
-            if cell.status == "occupied"
-                player_spaces += 1
-            end
-        end
-    end
-
-    nme_board.grid.each do |row|
-        row.each do |cell|
-            if cell.status == "occupied"
-                nme_spaces += 1
-            end
-        end
-    end
-
-    if nme_spaces == 0
-        puts "YOU WIN!"
-    elsif player_spaces == 0
-        puts "YOU LOSE!"
-    else
-        true
-    end
-
-end
-
-game_play(board, nme_board, opponent)
+game_play(board, nme_board, opponent, coordinates)
 
 
 

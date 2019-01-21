@@ -16,7 +16,6 @@ class Cell
 
     def hit_that
         if @status == "occupied"
-            @contents.take_hit()
             @contents = "X"
             @status = "dead"
         elsif @status = "open" 
