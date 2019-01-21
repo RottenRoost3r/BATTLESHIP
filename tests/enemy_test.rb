@@ -19,17 +19,21 @@ class Opponent < Minitest::Test
     def test_targeting
         board = Grid.new(12)
         nme = Enemy.new(board)
-        nme.enemy_turn(board)
+        coordinates = nme.coordinates
+        nme.enemy_turn(board, coordinates)
+        nme.enemy_turn(board, coordinates)
+        nme.enemy_turn(board, coordinates)
+        nme.enemy_turn(board, coordinates)
+        nme.enemy_turn(board, coordinates)
+        nme.enemy_turn(board, coordinates)
+        
         assert_equal(Array, nme.coordinates.class)
-        assert_equal(143, nme.coordinates.length)
+        assert_equal(138, nme.coordinates.length)
         assert_equal(Array, nme.target.class)
         assert_equal(2, nme.target.length)
+
     end
 
-    def test_targeting_array_item_removal
-        board = Grid.new(12)
-        nme = Enemy.new(board)
-        nme.enemy_turn(board)
-    end
+    
 
 end

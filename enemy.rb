@@ -37,23 +37,15 @@ class Enemy
         end
     end
 
-    def enemy_turn(grid)
-        @coordinates = []
-        num = []
-        counter = 0
-        grid.size.times do
-            num << counter
-            counter += 1
-        end
-        num.each do |row|
-            num.each do |col|
-                @coordinates << [row, col]
-            end 
-        end
-        @target = @coordinates.sample
+    
+    def enemy_turn(grid, coordinates)
+        @target = coordinates.sample
         row = @target[0]
         col = @target[1]
+        @coordinates.delete(@target)
         grid.shots_fired(row.to_i, col.to_i)
+        @target = @coordinates.sample
+
     end 
 
     attr_reader :grid
