@@ -76,15 +76,14 @@ class Grid
     end
 
     def shots_fired(row, col)
-        if self.grid[row][col].status == "occupied"
-             self.grid[row][col].got_hit()
-        elsif self.grid[row][col].status == "open"
-             self.grid[row][col].missed()
+        if row < @size && col < @size && row >= 0 && col >= 0
+            self.grid[row][col].hit_that()
         else
-            puts "invalid"
+            return "invalid"
         end
+
     end
-    
+
     attr_reader :end_point
     attr_reader :grid
     attr_reader :size

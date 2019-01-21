@@ -14,15 +14,15 @@ class Cell
         end
     end
 
-    def got_hit
-        @contents.take_hit()
-        @contents = "X"
-        @status = "dead"
-    end
-
-    def missed
-        @contents = "O"
-        @status = "open"
+    def hit_that
+        if @contents == "occupied"
+            @contents.take_hit()
+            @contents = "X"
+            @status = "dead"
+        else 
+            @contents = "O"
+            @status = "open"
+        end
     end
 
     def occupy(ship)
@@ -33,7 +33,7 @@ class Cell
     def annex(ship)
         @status = "occupied"
         #uncomment line below to see enemy ships
-        @contents = ship
+        # @contents = ship
     end
 
     def content()

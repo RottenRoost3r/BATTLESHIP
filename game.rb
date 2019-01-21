@@ -3,8 +3,6 @@ require_relative "boats.rb"
 require_relative "board.rb"
 require_relative "enemy.rb"
 
-
-
 boards = {"b" => Grid.new(12), "i" => Grid.new(24), "e" => Grid.new(36)}
 
 puts "Please select difficulty: Beginner [b], Intermediate [i], Expert[e]"
@@ -127,15 +125,9 @@ def enemy_turn(grid)
 end 
 
 def game_play(board, nme_board)
-    1.times do
-        your_turn(nme_board)
-     
-        enemy_turn(board)
-     
-        make_board(board); make_enemy_board(nme_board)
-
-        redo unless end_checker(board, nme_board) == "YOU LOSE!" && end_checker(board, nme_board) == "YOU WIN!"
-        
+    while end_checker(board, nme_board) == true
+        your_turn(nme_board); enemy_turn(board)
+        make_board(board); make_enemy_board(nme_board) 
     end
 end    
 
@@ -151,11 +143,6 @@ def end_checker(board, nme_board)
         end
     end
 
-    if player_spaces == 0
-        puts "YOU LOSE!"
-    end
-        
-    
     nme_board.grid.each do |row|
         row.each do |cell|
             if cell.status == "occupied"
@@ -166,6 +153,10 @@ def end_checker(board, nme_board)
 
     if nme_spaces == 0
         puts "YOU WIN!"
+    elsif player_spaces == 0
+        puts "YOU LOSE!"
+    else
+        true
     end
 
 end
