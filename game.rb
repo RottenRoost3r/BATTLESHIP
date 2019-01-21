@@ -110,6 +110,12 @@ def game_play(board, nme_board, opponent, coordinates)
         your_turn(nme_board); opponent.enemy_turn(board, coordinates)
         make_board(board); make_enemy_board(nme_board) 
     end
+
+    if board.end_checker(board, nme_board) == "YOU WIN!"
+        puts "YOU WIN!"
+    elsif board.end_checker(board, nme_board) == "YOU LOSE!"
+        puts "YOU LOSE!"
+    end
 end    
 
 game_play(board, nme_board, opponent, coordinates)

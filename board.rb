@@ -108,6 +108,7 @@ class Grid
             return "YOU WIN!"
         elsif player_spaces == 0
             return "YOU LOSE!"
+            
         else
             true
         end
