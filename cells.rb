@@ -17,7 +17,7 @@ class Cell
     def got_hit
         @contents.take_hit()
         @contents = "X"
-        @status = "open"
+        @status = "dead"
     end
 
     def missed
@@ -32,7 +32,8 @@ class Cell
 
     def annex(ship)
         @status = "occupied"
-        
+        #uncomment line below to see enemy ships
+        # @contents = ship
     end
 
     def content()

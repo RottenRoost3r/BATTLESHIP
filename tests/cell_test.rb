@@ -1,5 +1,6 @@
 require "minitest/autorun"
 require_relative "../cells.rb"
+require_relative "../board.rb"
 
 class Cells < Minitest::Test
 
@@ -23,4 +24,5 @@ class Cells < Minitest::Test
         x.missed
         assert_equal("O", x.content())
     end
+    
 end

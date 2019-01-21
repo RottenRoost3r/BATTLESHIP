@@ -1,7 +1,6 @@
 require_relative "cells.rb"
 require_relative "boats.rb"
 require_relative "board.rb"
-require_relative "player.rb"
 require_relative "enemy.rb"
 
 
@@ -87,44 +86,60 @@ ships.each_with_index do |(key, value),index|
     redo if board.check_board(value, row.to_i, col.to_i, orientation) == false 
     redo if board.check_spaces(value, row.to_i, col.to_i, orientation) == false
     puts board.master(value, row.to_i, col.to_i, orientation) 
+    system('cls')
     make_board(board); make_enemy_board(nme_board)
-end
+end; system("cls")
 
 opponent.place_ships()
 make_board(board); make_enemy_board(nme_board)
 
 def your_turn(grid)
-    puts "your turn first"
-    puts "what row would you like to fire on?"
-    row = gets.chomp
-    puts "what collum would you like to fire on?"
-    col = gets.chomp
+    1.times do
+        puts "what row would you like to fire on?"
+        row = gets.chomp
+        puts "what collum would you like to fire on?"
+        col = gets.chomp
 
-    puts grid.shots_fired(row.to_i, col.to_i)
-    
+        redo if grid.shots_fired(row.to_i, col.to_i) == "invalid"
+        system('cls')
+    end
 end
-your_turn(nme_board)
-make_board(board); make_enemy_board(nme_board)
 
-def enemy_turn(opponent, grid)
-    @coordinates = []
-    num = []
-    counter = 0
-    grid.size.times do
-        num << counter
-        counter += 1
+def enemy_turn(grid)
+    1.times do
+        @coordinates = []
+        num = []
+        counter = 0
+        grid.size.times do
+            num << counter
+            counter += 1
+        end
+        num.each do |row|
+            num.each do |col|
+                @coordinates << [row, col]
+            end 
+        end
+        @possible_targets = @coordinates
+        @target = @possible_targets.sample
+        row = @target[0]
+        col = @target[1]
+        redo if grid.shots_fired(row.to_i, col.to_i) == "invalid"
+        system('cls')
     end
-    num.each do |row|
-        num.each do |col|
-            @coordinates << [row, col]
-        end 
+end 
+
+def game_play(board, nme_board)
+    board.grid.each  do |row|
+        row.each do |cell|
+            your_turn(nme_board)
+            enemy_turn(board)
+            make_board(board) ; make_enemy_board(nme_board)
+        end
     end
-    @possible_targets = @coordinates
-    @target = @possible_targets.sample
-    row = @target[0]
-    col = @target[1]
-    puts grid.shots_fired(row.to_i, col.to_i)
-    
-end
-enemy_turn(opponent, board)
-make_board(board); make_enemy_board(nme_board)
+end            
+
+game_play(board, nme_board)
+
+
+
+

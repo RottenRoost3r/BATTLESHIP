@@ -41,6 +41,5 @@ class Enemy
     attr_reader :ships
     attr_reader :coordinates
     attr_reader :possible_targets
-    attr_reader :target
-    
+    attr_reader :target 
 end
