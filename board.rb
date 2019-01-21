@@ -105,9 +105,9 @@ class Grid
         end
     
         if nme_spaces == 0
-            puts "YOU WIN!"
+            return "YOU WIN!"
         elsif player_spaces == 0
-            puts "YOU LOSE!"
+            return "YOU LOSE!"
         else
             true
         end

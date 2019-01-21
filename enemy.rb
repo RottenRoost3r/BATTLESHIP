@@ -45,7 +45,6 @@ class Enemy
         @coordinates.delete(@target)
         grid.shots_fired(row.to_i, col.to_i)
         @target = @coordinates.sample
-
     end 
 
     attr_reader :grid

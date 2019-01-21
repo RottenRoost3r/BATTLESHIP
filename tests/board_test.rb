@@ -1,6 +1,7 @@
 require "minitest/autorun"
 require_relative "../board.rb"
 
+
 class Board < Minitest::Test
 
     def test_assert_that_1_equals_1
@@ -70,5 +71,37 @@ class Board < Minitest::Test
         col = 14
         assert_equal("invalid", board.shots_fired(row, col))
     end
+
+    def test_end_checker
+        board = Grid.new(12)
+        nme_board = Grid.new(12)
+        nme = Enemy.new(nme_board)
+        row = 1
+        col = 1
+        board.place_ship(Ship.new(5,"tugboat"), row, col, "horizontal")
+        assert_equal("YOU WIN!", board.end_checker(board, nme_board))
+    end
+
+    def test_end_checker_2
+        board = Grid.new(12)
+        nme_board = Grid.new(12)
+        nme = Enemy.new(nme_board)
+        row = 1
+        col = 1
+        nme_board.place_ship(Ship.new(5,"tugboat"), row, col, "horizontal")
+        assert_equal("YOU LOSE!", board.end_checker(board, nme_board))
+    end
+
+    def test_end_checker_3
+        board = Grid.new(12)
+        nme_board = Grid.new(12)
+        nme = Enemy.new(nme_board)
+        row = 1
+        col = 1
+        nme_board.place_ship(Ship.new(5,"tugboat"), row, col, "horizontal")
+        board.place_ship(Ship.new(5,"tugboat"), row, col, "horizontal")
+        assert_equal(true, board.end_checker(board, nme_board))
+    end
+
    
 end
