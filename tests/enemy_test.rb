@@ -20,10 +20,16 @@ class Opponent < Minitest::Test
         board = Grid.new(12)
         nme = Enemy.new(board)
         nme.enemy_turn(board)
-        assert_equal(Array, nme.possible_targets.class)
-        assert_equal(144, nme.possible_targets.length)
+        assert_equal(Array, nme.coordinates.class)
+        assert_equal(143, nme.coordinates.length)
         assert_equal(Array, nme.target.class)
         assert_equal(2, nme.target.length)
+    end
+
+    def test_targeting_array_item_removal
+        board = Grid.new(12)
+        nme = Enemy.new(board)
+        nme.enemy_turn(board)
     end
 
 end

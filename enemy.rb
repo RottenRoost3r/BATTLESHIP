@@ -50,17 +50,14 @@ class Enemy
                 @coordinates << [row, col]
             end 
         end
-        @possible_targets = @coordinates
-        @target = @possible_targets.sample
+        @target = @coordinates.sample
         row = @target[0]
         col = @target[1]
         grid.shots_fired(row.to_i, col.to_i)
-        # system('cls')
     end 
 
     attr_reader :grid
     attr_reader :ships
     attr_reader :coordinates
-    attr_reader :possible_targets
     attr_reader :target 
 end

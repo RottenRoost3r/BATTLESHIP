@@ -21,7 +21,7 @@ class Cell
             @status = "dead"
         elsif @status = "open" 
             @contents = "O"
-            @status = "open"
+            @status = "miss"
         end
     end
 

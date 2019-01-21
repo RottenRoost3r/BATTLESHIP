@@ -61,8 +61,14 @@ class Board < Minitest::Test
         row = 1
         col = 1
         board.shots_fired(row, col)
-        assert_equal("X", board.grid[1][1].to_s())
+        assert_equal("O", board.grid[1][1].to_s())
     end
 
+    def test_invalid_shot
+        board = Grid.new(12)
+        row = 14
+        col = 14
+        assert_equal("invalid", board.shots_fired(row, col))
+    end
    
 end
