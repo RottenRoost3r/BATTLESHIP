@@ -33,7 +33,7 @@ class Cell
     def annex(ship)
         @status = "occupied"
         #uncomment line below to see enemy ships
-        # @contents = ship
+        @contents = ship
     end
 
     def content()

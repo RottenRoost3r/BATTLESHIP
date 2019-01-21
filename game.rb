@@ -106,37 +106,69 @@ def your_turn(grid)
 end
 
 def enemy_turn(grid)
-    1.times do
-        @coordinates = []
-        num = []
-        counter = 0
-        grid.size.times do
-            num << counter
-            counter += 1
-        end
-        num.each do |row|
-            num.each do |col|
-                @coordinates << [row, col]
-            end 
-        end
-        @possible_targets = @coordinates
-        @target = @possible_targets.sample
-        row = @target[0]
-        col = @target[1]
-        redo if grid.shots_fired(row.to_i, col.to_i) == "invalid"
-        system('cls')
+    @coordinates = []
+    num = []
+    counter = 0
+    grid.size.times do
+        num << counter
+        counter += 1
     end
+    num.each do |row|
+        num.each do |col|
+            @coordinates << [row, col]
+        end 
+    end
+    @possible_targets = @coordinates
+    @target = @possible_targets.sample
+    row = @target[0]
+    col = @target[1]
+    grid.shots_fired(row.to_i, col.to_i)
+    system('cls')
 end 
 
 def game_play(board, nme_board)
-    board.grid.each  do |row|
+    1.times do
+        your_turn(nme_board)
+     
+        enemy_turn(board)
+     
+        make_board(board); make_enemy_board(nme_board)
+
+        redo unless end_checker(board, nme_board) == "YOU LOSE!" && end_checker(board, nme_board) == "YOU WIN!"
+        
+    end
+end    
+
+def end_checker(board, nme_board)
+    player_spaces = 0
+    nme_spaces = 0 
+
+    board.grid.each do |row|
         row.each do |cell|
-            your_turn(nme_board)
-            enemy_turn(board)
-            make_board(board) ; make_enemy_board(nme_board)
+            if cell.status == "occupied"
+                player_spaces += 1
+            end
         end
     end
-end            
+
+    if player_spaces == 0
+        puts "YOU LOSE!"
+    end
+        
+    
+    nme_board.grid.each do |row|
+        row.each do |cell|
+            if cell.status == "occupied"
+                nme_spaces += 1
+            end
+        end
+    end
+
+    if nme_spaces == 0
+        puts "YOU WIN!"
+    end
+
+end
 
 game_play(board, nme_board)
 
