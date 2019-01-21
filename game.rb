@@ -103,12 +103,6 @@ def your_turn(grid)
     end
 end
 
-# def enemy_turn(grid)
-    
-#     grid.shots_fired(row.to_i, col.to_i)
-#     system('cls')
-# end 
-
 def game_play(board, nme_board, opponent)
     while end_checker(board, nme_board) == true
         your_turn(nme_board); opponent.enemy_turn(board)
