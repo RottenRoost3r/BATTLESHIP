@@ -12,7 +12,9 @@ board = ""
 
 boards.each do |key, value|
     if response == key
-        board = value        
+        board = value  
+    else
+        board = Grid.new(12)      
     end
 end
 
