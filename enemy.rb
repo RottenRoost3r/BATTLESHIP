@@ -43,7 +43,7 @@ class Enemy
         row = @target[0]
         col = @target[1]
         @coordinates.delete(@target)
-        grid.shots_fired(row.to_i, col.to_i)
+        grid.shots_defended(row.to_i, col.to_i)
         @target = @coordinates.sample
     end 
 

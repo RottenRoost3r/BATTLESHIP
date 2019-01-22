@@ -4,6 +4,7 @@ class Cell
         @contents = "~"
         @coordinates = coordinates
         @status = "open"
+        @display
     end
 
     def to_s
@@ -14,12 +15,20 @@ class Cell
         end
     end
 
+    def e_to_s
+        if @contents.class == Ship
+            return @display
+        else
+            @contents
+        end
+    end
+
     def hit_that
         if @status == "occupied"
             @contents = "X"
             @status = "dead"
             return "Hit"
-        elsif @status = "open" 
+        elsif @status == "open" 
             @contents = "O"
             @status = "miss"
             return "Miss"
@@ -33,8 +42,8 @@ class Cell
 
     def annex(ship)
         @status = "occupied"
-        #uncomment line below to see enemy ships
         @contents = ship
+        @display = "~"
     end
 
     def content()
@@ -43,5 +52,6 @@ class Cell
     attr_reader :status
     attr_reader :contents
     attr_reader :coordinates
+    attr_reader :display
 end
 

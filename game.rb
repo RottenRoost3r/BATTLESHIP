@@ -65,7 +65,39 @@ def make_board(board)
 end
 
 def make_enemy_board(nme_board)
-    make_board(nme_board)
+    counter_top = 0
+    print " "
+
+    nme_board.grid.each_with_index do |v, i|
+        if counter_top < 10
+            print "   #{counter_top}"
+            counter_top += 1
+        else
+            print "  #{counter_top}"
+            counter_top += 1
+        end
+    end
+
+    puts "\n"
+    counter_side = 0
+    nme_board.grid.each_with_index do |v, i|
+        
+        v.each_with_index do |k, i|
+            if i == 0
+                if counter_side < 10
+                    print " #{counter_side} (#{k.e_to_s})"
+                    counter_side += 1
+                else # this extra if statement was just to satisfy my ocd, it's not actually neede, the game works fine without it, but the grid is offset past row 9 because the extra digit
+                    print "#{counter_side} (#{k.e_to_s})"
+                    counter_side += 1
+                end
+            elsif i == nme_board.end_point
+                print " (#{k.e_to_s}) \n"
+            else
+                print " (#{k.e_to_s})"
+            end
+        end
+    end
 end
 
 

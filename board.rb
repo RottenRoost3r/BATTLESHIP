@@ -78,14 +78,19 @@ class Grid
 
     def shots_fired(row, col)
         if row < @size && col < @size && row >= 0 && col >= 0
-            if self.grid[row][col].content.class == Ship
+            if self.grid[row][col].status == "occupied"
                 p self.grid[row][col].content.take_hit()
             end
 
             return self.grid[row][col].hit_that()
-            
-            # puts "here is what you're looking for #{ self.grid[row][col].hit_that()}"
-           
+        else
+            return "invalid"
+        end
+    end
+
+    def shots_defended(row, col)
+        if row < @size && col < @size && row >= 0 && col >= 0
+            return self.grid[row][col].hit_that()
         else
             return "invalid"
         end
