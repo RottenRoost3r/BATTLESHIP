@@ -1,7 +1,7 @@
 require_relative "boats.rb"
 class Cell
     def initialize()
-        @contents = "~"
+        @contents = "(~)"
         @coordinates = coordinates
         @status = "open"
         @display
@@ -43,7 +43,7 @@ class Cell
     def annex(ship)
         @status = "occupied"
         @contents = ship
-        @display = "~"
+        @display = "(~)"
     end
 
     def content()

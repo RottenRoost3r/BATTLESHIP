@@ -19,9 +19,9 @@ end
 get '/board' do
   params[:size] = session[:size]
   board = Grid.new(session[:size].to_i)
-  p board
-  p session[:size]
+  nme_board = Grid.new(session[:size].to_i)
+  params[:nme_board] = nme_board
   params[:board] = board
-  erb :board, locals: {board: board}
+  erb :board, locals: {board: board, nme_board: nme_board}
 end
 

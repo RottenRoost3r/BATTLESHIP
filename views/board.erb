@@ -3,8 +3,29 @@
 
 <body>
     <div class='board' id='board'>
-        <table style="width:30%" id="table">
-            <%board.grid.each_with_index do |row, indx|%>
+        <table style="float:left; color:blue" id="table">
+        <th></th>
+        <%board.grid.length.times do |v|%>
+            <th><%=v%></th>   
+        <%end%>
+            <%board.grid.each_with_index do |row, indx|%> 
+                <tr>
+                <th><%=indx%></th>
+                    <%row.each_with_index do |v, i|%>
+                        <th><%=v%></th>
+                    <%end%>
+                </tr>
+            <%end%>
+        </table>
+    </div>
+
+    <div class='nme_board' id='nme_board'>
+        <table style="float:right; color:red" id="nme_table">
+        <th></th>
+        <%nme_board.grid.length.times do |v|%>
+            <th><%=v%></th>   
+        <%end%>
+            <%nme_board.grid.each_with_index do |row, indx|%> 
                 <tr>
                 <th><%=indx%></th>
                     <%row.each_with_index do |v, i|%>
