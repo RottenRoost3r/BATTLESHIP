@@ -6,10 +6,9 @@
         <table style="width:30%" id="table">
             <%board.grid.each_with_index do |row, indx|%>
                 <tr>
+                <th><%=indx%></th>
                     <%row.each_with_index do |v, i|%>
-                    
-                    <th><%=v%></th>
-                    
+                        <th><%=v%></th>
                     <%end%>
                 </tr>
             <%end%>
