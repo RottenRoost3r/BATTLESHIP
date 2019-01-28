@@ -2,5 +2,17 @@
 </head>
 
 <body>
-
+    <div class='board' id='board'>
+        <table style="width:30%" id="table">
+            <%board.grid.each_with_index do |row, indx|%>
+                <tr>
+                    <%row.each_with_index do |v, i|%>
+                    
+                    <th><%=v%></th>
+                    
+                    <%end%>
+                </tr>
+            <%end%>
+        </table>
+    </div>
 </body>

@@ -13,8 +13,15 @@ end
 
 post '/board' do
   session[:size] = params[:size]
+  redirect '/board'
+end
+
+get '/board' do
+  params[:size] = session[:size]
   board = Grid.new(session[:size].to_i)
+  p board
+  p session[:size]
   params[:board] = board
-  erb :board
+  erb :board, locals: {board: board}
 end
 
