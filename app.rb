@@ -53,7 +53,7 @@ post '/board' do
     session[:err] = "invalid placement"
   end
 
-  if session[:increase] >= 4
+  if session[:increase] > 4
     if session[:nme_board].shots_fired(params[:row].to_i, params[:col].to_i) == "invalid"
       session[:err] = "invalid shot"
     end
