@@ -13,7 +13,6 @@ end
 post '/' do
   session[:board] = Grid.new(params[:size].to_i)
   session[:nme_board] = Grid.new(params[:size].to_i)
-  p "RIGHT HERE#{session[:board]}"
   redirect '/board'
 end
 
@@ -24,8 +23,6 @@ get '/board' do
 end
 
 post '/board' do
-  session[:nme_board] = params[:nme_board]
-  session[:board] = params[:board]
   redirect '/board'
 end
 
