@@ -1,6 +1,5 @@
 require_relative "cells.rb"
-require_relative "boats.rb"
-require_relative "enemy.rb"
+
 
 class Grid 
     def initialize(size=12)

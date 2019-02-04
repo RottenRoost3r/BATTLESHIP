@@ -3,7 +3,7 @@ require_relative 'board.rb'
 require_relative 'boats.rb'
 require_relative 'cells.rb'
 require_relative 'enemy.rb'
-use Rack::Session::Pool, :expire_after => 60 * 1
+use Rack::Session::Pool
 
 get '/' do
 
