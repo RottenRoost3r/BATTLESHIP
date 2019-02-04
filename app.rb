@@ -32,6 +32,10 @@ get '/board' do
   if session[:increase] == 4
     session[:enemy].place_ships()
   end
+
+  if session[:increase]== 4
+    ship_num += 1
+  end
   erb :board, locals: {board: board, nme_board: nme_board, row: row, col: col, orientation: orientation, ship_num: ship_num, err: session[:err]}
 end
 
@@ -50,7 +54,7 @@ post '/board' do
   end
 
   if session[:increase] >= 4
-    if session[:nme_board].shots_fired(params[:row].to_i, params[:col].to_i) == "invalid shot"
+    if session[:nme_board].shots_fired(params[:row].to_i, params[:col].to_i) == "invalid"
       session[:err] = "invalid shot"
     end
   end
