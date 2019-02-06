@@ -11,6 +11,7 @@ get '/' do
 end
 
 post '/' do
+  session.clear
   session[:board] = Grid.new(params[:size].to_i)
   session[:nme_board] = Grid.new(params[:size].to_i)
   session[:enemy] = Enemy.new(session[:nme_board])
@@ -33,13 +34,14 @@ get '/board' do
     session[:enemy].place_ships()
   end
 
-  if session[:increase]== 4
+  if session[:increase] == 4
     ship_num += 1
   end
   erb :board, locals: {board: board, nme_board: nme_board, row: row, col: col, orientation: orientation, ship_num: ship_num, err: session[:err]}
 end
 
 post '/board' do
+  coordinates = session[:enemy].coordinates
   session[:err] = ""
   session[:increase] = params[:ship_num].to_i
   session[:row] = params[:row]
@@ -56,6 +58,8 @@ post '/board' do
   if session[:increase] > 4
     if session[:nme_board].shots_fired(params[:row].to_i, params[:col].to_i) == "invalid"
       session[:err] = "invalid shot"
+    else
+      session[:enemy].enemy_turn(session[:board], coordinates)
     end
   end
 

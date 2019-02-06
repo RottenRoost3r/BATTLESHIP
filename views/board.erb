@@ -38,8 +38,8 @@
 
     <form method="post" action="board">
         <div class="input">
-            <input type="number" name="row" placeholder="ROW">
-            <input type="number" name="col" placeholder="COLUMN">
+            <input type="number" name="row" placeholder="ROW" max=35>
+            <input type="number" name="col" placeholder="COLUMN" max=35>
             <input type="text" name="orientation" placeholder="Horizontal/Vertical">
             <input type='hidden' name='ship_num' value='<%=ship_num%>' id="ship_num">
             <%=err%>
