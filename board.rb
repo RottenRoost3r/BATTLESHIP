@@ -77,11 +77,16 @@ class Grid
 
     def shots_fired(row, col)
         if row < @size && col < @size && row >= 0 && col >= 0
-            if self.grid[row][col].status == "occupied"
-                p self.grid[row][col].content.take_hit()
-            end
+            self.grid[row][col].enemy_hit_that()
+            if self.grid[row][col].status == "dead" 
+                
+                return self.grid[row][col].content.take_hit()
+                
+            else
 
-            return self.grid[row][col].hit_that()
+                
+                return "miss"
+            end
         else
             return "invalid"
         end

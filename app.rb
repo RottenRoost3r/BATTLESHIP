@@ -20,6 +20,7 @@ post '/' do
 end
 
 get '/board' do
+  hitter = session[:hitter] || ""
   board = session[:board]
   nme_board = session[:nme_board]
   ship_num = session[:increase] || 0
@@ -37,7 +38,7 @@ get '/board' do
   if session[:increase] == 4
     ship_num += 1
   end
-  erb :board, locals: {board: board, nme_board: nme_board, row: row, col: col, orientation: orientation, ship_num: ship_num, err: session[:err]}
+  erb :board, locals: {board: board, nme_board: nme_board, row: row, col: col, orientation: orientation, ship_num: ship_num, err: session[:err], hitter: hitter}
 end
 
 post '/board' do
@@ -57,8 +58,11 @@ post '/board' do
 
   if session[:increase] > 4
     if session[:nme_board].shots_fired(params[:row].to_i, params[:col].to_i) == "invalid"
+      
       session[:err] = "invalid shot"
     else
+      session[:hitter] = session[:nme_board].shots_fired(params[:row].to_i, params[:col].to_i)
+      # session[:hitter] = session[:nme_board].grid[params[:row].to_i][params[:col].to_i].contents.take_hit()
       session[:enemy].enemy_turn(session[:board], coordinates)
     end
   end

@@ -35,6 +35,18 @@ class Cell
         end
     end
 
+    def enemy_hit_that
+        if @status == "occupied"
+            @display = "X"
+            @status = "dead"
+            return "Hit"
+        elsif @status == "open" 
+            @contents = "O"
+            @status = "miss"
+            return "Miss"
+        end
+    end
+
     def occupy(ship)
         @contents = ship
         @status = "occupied"
