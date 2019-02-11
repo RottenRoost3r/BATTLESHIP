@@ -46,19 +46,28 @@ post '/board' do
   ships = [carrier = Ship.new(5, "(C)"), battleship = Ship.new(4, "(B)"), destroyer = Ship.new(3, "(D)"), patrol = Ship.new(2, "(P)")]
   
   coords = params[:grid_cell] || []
+  mycoords = params[:my_cell] || []
   session[:err] = ""
   session[:increase] = params[:ship_num].to_i
   session[:row] = params[:row]
   session[:col] = params[:col]
   session[:orientation] = params[:orientation]
   coordinates = session[:enemy].coordinates
+  
+  if mycoords != []
+    mycoords = mycoords[0].delete "[]"
+    mycoords = mycoords.split(",")
+    session[:row] = mycoords[0]
+    session[:col] = mycoords[1]
+  end
+
   if coords != []
      coords = coords[0].delete "[]"
       coords = coords.split(",")
      session[:row] = coords[0]
      session[:col] = coords[1]
   end
-  p "coordinates in the app.rb end#{coordinates.length}"
+
   if session[:board].master(ships[session[:increase]], session[:row].to_i, session[:col].to_i, params[:orientation].to_s) != "invalid placement"
     session[:place_ship] = ships[session[:increase]]
     session[:increase] += 1
@@ -71,7 +80,6 @@ post '/board' do
   end
 
   if session[:increase] > 4
-    
     session[:hitter] = session[:nme_board].shots_fired(session[:row].to_i, session[:col].to_i)
     if session[:hitter] == "invalid"  
       session[:err] = "invalid shot"

@@ -13,7 +13,7 @@
                 <tr>
                 <th><%=indx%></th>
                     <%row.each_with_index do |v, i|%>
-                        <th><button><%=v%></button></th>
+                        <th><button class="my_button" id="mybutton<%="#{indx}#{i}"%>" name="my_cell[]" value="<%=[indx, i]%>"><%=v%></button></th>
                     <%end%>
                 </tr>
             <%end%>
@@ -30,7 +30,7 @@
                 <tr>
                 <th><%=indx%></th>
                     <%row.each_with_index do |v, i|%>
-                        <th class="single_cell"><button class="cell_button" id="cellbutton<%="#{indx}#{i}"%>" name="grid_cell[]" value="<%=[indx, i]%>"><%=v.e_to_s%></button></th>
+                        <th><button class="cell_button" id="cellbutton<%="#{indx}#{i}"%>" name="grid_cell[]" value="<%=[indx, i]%>"><%=v.e_to_s%></button></th>
                     <%end%>
                 </tr>
             <%end%>
@@ -42,12 +42,11 @@
     <%max_num = board.grid.length - 1%>
     
         <div class="input">
-            <input type="number" name="row" placeholder="ROW" min=0 max=<%=max_num%> >
-            <input type="number" name="col" placeholder="COL" min=0 max=<%=max_num%> >
-            <input type="text" name="orientation" placeholder="Horizontal/Vertical">
+            <input type="radio" name="orientation" value="horizontal">HORIZONTAL
+            <input type="radio" name="orientation" value="vertical">VERTICAL
             <input type='hidden' name='ship_num' value='<%=ship_num%>' id="ship_num">
             <%=err%>
-            <button class="button">ENTER</button>
+            
         </div>
     </form>
 
