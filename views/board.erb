@@ -2,6 +2,7 @@
 </head>
 
 <body>
+<form method="post" action="board">
     <div class='board' id='board'>
         <table style="float:left; color:blue" id="table">
         <th></th>
@@ -29,7 +30,7 @@
                 <tr>
                 <th><%=indx%></th>
                     <%row.each_with_index do |v, i|%>
-                        <th><button><%=v.e_to_s%></button></th>
+                        <th class="single_cell"><button class="cell_button" id="cellbutton<%="#{indx}#{i}"%>" name="grid_cell[]" value="<%=[indx, i]%>"><%=v.e_to_s%></button></th>
                     <%end%>
                 </tr>
             <%end%>
@@ -39,7 +40,7 @@
         <h2><%=hitter%></h2>
     </div>
     <%max_num = board.grid.length - 1%>
-    <form method="post" action="board">
+    
         <div class="input">
             <input type="number" name="row" placeholder="ROW" min=0 max=<%=max_num%> >
             <input type="number" name="col" placeholder="COL" min=0 max=<%=max_num%> >

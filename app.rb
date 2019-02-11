@@ -27,6 +27,9 @@ get '/board' do
   row = session[:row].to_i || 0
   col = session[:col].to_i || 0
   orientation = session[:orientation].to_s || ""
+
+  
+ 
   if session[:err] != "invalid placement"
     board.master(session[:place_ship], row, col, orientation) if orientation != ""
   end
@@ -48,8 +51,22 @@ post '/board' do
   session[:row] = params[:row]
   session[:col] = params[:col]
   session[:orientation] = params[:orientation]
+
+  coords = params[:grid_cell] || []
+  p coords
+  if coords != []
+    p coords
+     coords = coords[0].delete "[]"
+     p coords
+      coords = coords.split(",")
+     session[:row] = coords[0]
+     p "HERE IS THE ROW #{session[:row]}"
+     session[:col] = coords[1]
+     p "HERE IS THE COL #{session[:col]}"
+  end
+  p coords
   ships = [carrier = Ship.new(5, "(C)"), battleship = Ship.new(4, "(B)"), destroyer = Ship.new(3, "(D)"), patrol = Ship.new(2, "(P)")]
-  if session[:board].master(ships[session[:increase]], params[:row].to_i, params[:col].to_i, params[:orientation].to_s) != "invalid placement"
+  if session[:board].master(ships[session[:increase]], session[:row].to_i, session[:col].to_i, params[:orientation].to_s) != "invalid placement"
     session[:place_ship] = ships[session[:increase]]
     session[:increase] += 1
   else
@@ -57,12 +74,10 @@ post '/board' do
   end
 
   if session[:increase] > 4
-    if session[:nme_board].shots_fired(params[:row].to_i, params[:col].to_i) == "invalid"
-      
+    session[:hitter] = session[:nme_board].shots_fired(session[:row].to_i, session[:col].to_i)
+    if session[:hitter] == "invalid"  
       session[:err] = "invalid shot"
     else
-      session[:hitter] = session[:nme_board].shots_fired(params[:row].to_i, params[:col].to_i)
-      # session[:hitter] = session[:nme_board].grid[params[:row].to_i][params[:col].to_i].contents.take_hit()
       session[:enemy].enemy_turn(session[:board], coordinates)
     end
   end
