@@ -22,6 +22,7 @@ end
 
 get '/board' do
   hitter = session[:hitter] || ""
+  ending = session[:ending] || ""
   board = session[:board]
   nme_board = session[:nme_board]
   ship_num = session[:increase] || 0
@@ -39,7 +40,7 @@ get '/board' do
     ship_num += 1
   end
 
-  erb :board, locals: {board: board, nme_board: nme_board, row: row, col: col, orientation: orientation, ship_num: ship_num, err: session[:err], hitter: hitter}
+  erb :board, locals: {board: board, nme_board: nme_board, row: row, col: col, orientation: orientation, ship_num: ship_num, err: session[:err], hitter: hitter, ending: ending}
 end
 
 post '/board' do
@@ -52,6 +53,7 @@ post '/board' do
   session[:row] = params[:row]
   session[:col] = params[:col]
   session[:orientation] = params[:orientation]
+  
   coordinates = session[:enemy].coordinates
   
   if mycoords != []
@@ -71,6 +73,7 @@ post '/board' do
   if session[:board].master(ships[session[:increase]], session[:row].to_i, session[:col].to_i, params[:orientation].to_s) != "invalid placement"
     session[:place_ship] = ships[session[:increase]]
     session[:increase] += 1
+    
   else
     session[:err] = "invalid placement"
   end
@@ -79,12 +82,20 @@ post '/board' do
     session[:enemy].place_ships()
   end
 
+  
   if session[:increase] > 4
     session[:hitter] = session[:nme_board].shots_fired(session[:row].to_i, session[:col].to_i)
+    if session[:board].end_checker(session[:board], session[:nme_board]) != true
+      session[:ending] = session[:board].end_checker(session[:board], session[:nme_board])
+    end
+
     if session[:hitter] == "invalid"  
       session[:err] = "invalid shot"
     else
       session[:enemy].enemy_turn(session[:board], coordinates)
+      if session[:board].end_checker(session[:board], session[:nme_board]) != true
+        session[:ending] = session[:board].end_checker(session[:board], session[:nme_board])
+      end
     end
   end
 
