@@ -38,9 +38,9 @@ class Grid
 
     def check_board(ship, row, col, orientation)
         if orientation == "horizontal" || orientation == "h"
-            col + ship.length < grid.length && (col < grid.length && row < grid.length) ? true : false
+            col + ship.length < grid.length + 1  && (col < grid.length + 1 && row < grid.length + 1 ) ? true : false
         elsif orientation == "vertical" || orientation == "v"
-            row + ship.length < grid.length && (col < grid.length && row < grid.length) ? true : false
+            row + ship.length < grid.length + 1  && (col < grid.length + 1  && row < grid.length + 1 ) ? true : false
         else
             false
         end
