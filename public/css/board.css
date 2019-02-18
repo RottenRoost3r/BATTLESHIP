@@ -1,0 +1,31 @@
+button{
+    color: lawngreen;
+    background-color: black;
+    border-style: none
+}
+
+h1{
+    color: white;
+}
+
+h2{
+    color: white;
+}
+
+.input{
+    color: white;
+}
+
+
+.table,tr,th{
+    background-color: black;
+    border-style: inset;
+    /* border:1px  solid black; */
+    border-color: green;
+}
+
+body{
+    background-color: black;
+}
+
+
