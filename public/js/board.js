@@ -12,12 +12,13 @@ function disableButton() {
     var other = document.querySelectorAll('.my_button')
     var shipnum = document.getElementById('ship_num')
     var ender = document.getElementById('ending')
+    
     dis.forEach(function(element){
         if (element.innerHTML != '(~)') {
             element.disabled = true
         }
-
-        if (ender != true){
+        
+        if (ender.innerText == "YOU WIN!" || ender.innerText == "YOU LOSE!"){
             element.disabled = true
         }
     });
