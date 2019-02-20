@@ -1,4 +1,4 @@
-<head>
+<head >
 <link rel="stylesheet" type="text/css" href="/css/board.css">
 <script src="js/board.js" type="text/javascript"></script>
 </head>
@@ -8,7 +8,7 @@
 
     <div class='board' id='board'>
         <h1> YOUR BOARD </h1>
-        <table style="float:left; color:blue" id="table">
+        <table style="float:left; color:blue; font-size: smaller" id="table">
         <th></th>
         <%board.grid.length.times do |v|%>
             <th><%=v%></th>   
@@ -44,11 +44,17 @@
             <%end%>
         </table>
     </div>
+    
     <div name="hitter">
         <h2><%=hitter%></h2>
     </div>
+    
     <%max_num = board.grid.length - 1%>
+    
+    <div name='ending' id='ending'>
     <h1><%=ending%></h1>
+    </div>
+
         <div class="input" id="input">
             <input type="radio" name="orientation" id="hor_button" value="horizontal">HORIZONTAL
             <input type="radio" name="orientation" id="vert_button" value="vertical">VERTICAL

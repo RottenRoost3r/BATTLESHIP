@@ -9,28 +9,30 @@ var input = document.getElementById("input")
 
 function disableButton() {
     var dis = document.querySelectorAll('.cell_button')
+    var other = document.querySelectorAll('.my_button')
+    var shipnum = document.getElementById('ship_num')
+    var ender = document.getElementById('ending')
     dis.forEach(function(element){
         if (element.innerHTML != '(~)') {
+            element.disabled = true
+        }
+
+        if (ender != true){
+            element.disabled = true
+        }
+    });
+
+    other.forEach(function(element){
+        if (element.innerHTML != '(~)'){
+            element.disabled = true
+        }
+
+        if (shipnum.value == 5){
             element.disabled = true
         }
     });
 }
 
-document.onkeyup = function (event) {
-
-    var grid = document.getElementById('board')
-    var nme_grid = document.getElementById('nme_board')
-
-    if (event.which == 37 || event.keyCode == 37){
-        grid.style.display = "block"
-        nme_grid.style.display = "none"
-    }
-
-    if (event.which == 39 || event.keyCode == 39){
-        grid.style.display = "none"
-        nme_grid.style.display = "block"
-    }
-}
 
 
     
