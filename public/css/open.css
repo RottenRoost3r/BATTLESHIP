@@ -1,0 +1,30 @@
+h2{
+    color: lawngreen;
+    text-align: center;
+}
+
+h3.select{
+    color: lawngreen;
+    text-align: center
+} 
+
+
+body{
+    background-color: black;
+
+}
+
+.form{
+    margin: 10 10 10 556px;
+}
+
+button{
+    border: 20px solid lawngreen;
+    background-color: black;
+    color: lawngreen;
+    margin: 17px 15px 17px 250px;
+    height: 100px;
+    width: 100px;
+}
+
+

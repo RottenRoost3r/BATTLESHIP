@@ -15,12 +15,14 @@ post '/' do
   session[:board] = Grid.new(params[:size].to_i)
   session[:nme_board] = Grid.new(params[:size].to_i)
   session[:enemy] = Enemy.new(session[:nme_board])
+  session[:size] = params[:size].to_i
   session[:err] = ""
   
   redirect '/board'
 end
 
 get '/board' do
+  size = session[:size]
   hitter = session[:hitter] || ""
   ending = session[:ending] || ""
   board = session[:board]
@@ -39,8 +41,8 @@ get '/board' do
   if session[:increase] == 4
     ship_num += 1
   end
-
-  erb :board, locals: {board: board, nme_board: nme_board, row: row, col: col, orientation: orientation, ship_num: ship_num, err: session[:err], hitter: hitter, ending: ending}
+  
+  erb :board, locals: {board: board, nme_board: nme_board, row: row, col: col, orientation: orientation, size: size, ship_num: ship_num, err: session[:err], hitter: hitter, ending: ending}
 end
 
 post '/board' do

@@ -1,14 +1,21 @@
 <head >
 <link rel="stylesheet" type="text/css" href="/css/board.css">
 <script src="js/board.js" type="text/javascript"></script>
+
+
 </head>
 
-<body onload="hideInputs(); disableButton();">
+<body onload="hideInputs(); disableButton(); size(); colorMod();">
+
+
+<input type="hidden" name ="size" id="size" value='<%=size%>'>
+
 <form method="post" id="bigform" action="board">
+
 
     <div class='board' id='board'>
         <h1> YOUR BOARD </h1>
-        <table style="float:left; color:blue; font-size: smaller" id="table">
+        <table id="table">
         <th></th>
         <%board.grid.length.times do |v|%>
             <th><%=v%></th>   
@@ -17,7 +24,7 @@
                 <tr>
                 <th><%=indx%></th>
                     <%row.each_with_index do |v, i|%>
-                        <th><button  class="my_button" id="mybutton<%="#{indx}#{i}"%>" name="my_cell[]" value="<%=[indx, i]%>"><%=v%></button></th>
+                        <td><button  class="my_button" id="mybutton<%="#{indx}#{i}"%>" name="my_cell[]" value="<%=[indx, i]%>"><%=v%></button></td>
                     <%end%>
                 </tr>
             <%end%>
@@ -25,8 +32,8 @@
     </div>
 
     <div class='nme_board' id='nme_board' >
-    <h1 style="position:absolute; right:0; top:-13" > ENEMY BOARD </h1>
-        <table style="float:right; color:red" id="nme_table">
+    <h1 class="nme_board_sign" > ENEMY BOARD </h1>
+        <table id="nme_table">
         
         <th></th>
         <%nme_board.grid.length.times do |v|%>
@@ -37,7 +44,7 @@
                 <th><%=indx%></th>
                     <%row.each_with_index do |v, i|%>
                         
-                        <th><button class="cell_button" id="cellbutton<%="#{indx}#{i}"%>" name="grid_cell[]" value="<%=[indx, i]%>"><%=v.e_to_s%></button></th>
+                        <td><button class="cell_button" id="cellbutton<%="#{indx}#{i}"%>" name="grid_cell[]" value="<%=[indx, i]%>"><%=v.e_to_s%></button></td>
                  
                     <%end%>
                 </tr>
@@ -50,11 +57,15 @@
     </div>
     
     <%max_num = board.grid.length - 1%>
+
     
+
     <div name='ending' id='ending'>
     <h1><%=ending%></h1>
+    
+    
+    
     </div>
-
         <div class="input" id="input">
             <input type="radio" name="orientation" id="hor_button" value="horizontal">HORIZONTAL
             <input type="radio" name="orientation" id="vert_button" value="vertical">VERTICAL
@@ -62,7 +73,30 @@
             <div id="error"><%=err%></div>
         </div>
     </form>
-    
 
+    </div id="modal-button">
+        <button id="myBtn" class="myBtn" onclick="showModal()">HOW TO PLAY</button>
+    </div>
+
+<div id="myModal" class="modal" onclick="window(event)">
+    
+    <div class="modal-content">
+    <h3>BATTLESHIP RULES AND GAMEPLAY</h3>
+
+        <span class="close" onclick="onModal()">&times;</span>
+        
+        <p>You begin by selecting your ship's orientation (horizontal or vertical), then select a spot on your grid to place your ship.</p>
+         <p>Your ships will be placed in this order:</p>
+          <p>Carrier(5 spaces)</p>
+          <p>Battleship(4 spaces)</p>
+          <p>Destroyer(3 spaces)</p>
+          <p>Patrol(2 spaces)</p>
+          <p>Once all of your ships are placed you can begin firing by clicking on a space on the enemy's grid</p> 
+          <p>The enemy will fire once you have fired. </p>
+          <p>The game will end when either player has no ships remaining</p>
+    </div>
+
+</div>
+    
 
 </body>
